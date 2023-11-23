@@ -24,9 +24,9 @@ try:
     batch_size = 32 # default
     path = sys.argv[1]
     if not os.path.exists(path): raise FileNotFoundError
-    if not os.path.exists(path+"\\Models"): raise FileNotFoundError
-    if not os.path.exists(path+"\\Training"): raise FileNotFoundError
-    if not os.path.exists(path+"\\Testing"): raise FileNotFoundError
+    if not os.path.exists(path+"/Models"): raise FileNotFoundError
+    if not os.path.exists(path+"/Training"): raise FileNotFoundError
+    if not os.path.exists(path+"/Testing"): raise FileNotFoundError
 
     # Parse flags / parameters
     args = sys.argv
@@ -85,10 +85,10 @@ from keras.utils import np_utils
 
 # Load data
 log("Loading data...", a=1)
-X_train = np.load(f"{path}\\Training\\input.npy")
-y_train = np.load(f"{path}\\Training\\output.npy")
-X_test = np.load(f"{path}\\Testing\\input.npy")
-y_test = np.load(f"{path}\\Testing\\output.npy")
+X_train = np.load(f"{path}/Training/input.npy")
+y_train = np.load(f"{path}/Training/output.npy")
+X_test = np.load(f"{path}/Testing/input.npy")
+y_test = np.load(f"{path}/Testing/output.npy")
 
 train_shuffle = np.arange(len(X_train))
 test_shuffle = np.arange(len(X_test))
@@ -190,5 +190,5 @@ except KeyboardInterrupt:
 
 log(f"Saving model...", a=1)
 ctime = str(time.time()).split(".")[0]
-model.save(f"{path}\\Models\\model{ctime}_{int(scores[1]*100)}")
-log(f"Model path: '{path}\\Models\\model{ctime}_{int(scores[1]*100)}'", a=0)
+model.save(f"{path}/Models/model{ctime}_{int(scores[1]*100)}")
+log(f"Model path: '{path}/Models/model{ctime}_{int(scores[1]*100)}'", a=0)
